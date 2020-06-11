@@ -3,6 +3,7 @@ const myUpload = express();
 const multer = require("multer");
 const session = require("express-session");
 const flash = require("connect-flash");
+const path = require("path");
 
 //View engine
 myUpload.set("view engine", "ejs");
@@ -21,7 +22,7 @@ const storage = multer.diskStorage({
         cb(null, "files/");
     },
     filename: function(req, file, cb) {
-        cb(null, file.originalname);
+        cb(null, file.originalname + Date.now() + path.extname(file.originalname));
     }
 });
 
