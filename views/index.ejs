@@ -1,16 +1,21 @@
 <%- include('./partials/header.ejs') %>
-<div class="container">
-    <hr>
-    <form action="" method="post" enctype="multipart/form-data">
-        <div class="input-group">
-            <div class="custom-file">
-                <input type="file" class="custom-file-input" id="file" aria-describedby="inputFile">
-                <label class="custom-file-label" for="file">Selecione o arquivo</label>
-            </div>
-            <div class="input-group-append">
-                <button class="btn btn-success" type="button" id="btnUpload">Button</button>
-            </div>
+<body>
+  <div class="container">
+      <hr>
+      <% if (fileUploaded.length > 0) { %>
+        <div class="alert alert-success" role="alert">
+          <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+          <spam>O arquivo foi salvo com sucesso!</spam>
         </div>
-    </form>
-</div>
+      <% } %>
+
+      <form action="/upload" method="post" enctype="multipart/form-data">
+          <input type="file" name="file" id="file">
+          <hr>
+          <input type="submit" value="Upload" class="btn btn-success">
+      </form>
+  </div>
+</body>
 <%- include('./partials/footer.ejs') %>
